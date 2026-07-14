@@ -1,0 +1,138 @@
+name: swastik
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  iconly: ^1.0.1
+  animate_icons: ^2.0.0
+  firebase_core: ^2.32.0
+  firebase_auth: ^4.20.0
+  firebase_storage: ^11.7.0
+  firebase_app_check: ^0.2.2+7
+  supabase_flutter: ^2.5.0
+  flutter_local_notifications: ^17.2.2
+  firebase_messaging: ^14.9.4
+  google_sign_in: ^6.2.1
+  provider: ^6.1.2
+  # Use system fonts instead of google_fonts to reduce size
+  # google_fonts: ^6.2.1
+  cloud_firestore: ^4.17.0
+  image_picker: ^0.8.6+1
+  google_maps_flutter: ^2.5.0
+  google_maps_cluster_manager: ^3.0.0+1
+  geocoding: ^2.1.0
+  geolocator: ^10.1.0
+  permission_handler: ^11.0.1
+
+  intl: ^0.19.0
+  
+  # Performance and Animation dependencies
+  image: ^4.1.7
+  path_provider: ^2.1.2
+  shared_preferences: ^2.3.2
+  cached_network_image: ^3.3.1
+  flutter_cache_manager: ^3.3.1
+  connectivity_plus: ^5.0.2
+  flutter_image_compress: ^2.1.0
+  shimmer: ^3.0.0
+  crypto: ^3.0.3
+  vibration: ^2.0.0
+  share_plus: ^7.2.2
+  url_launcher: ^6.2.4
+  # Replace fl_chart with a lighter alternative if possible
+  fl_chart: ^0.68.0
+  http: ^1.1.0
+  xml: ^6.3.0
+  logging: ^1.2.0
+  uuid: ^4.2.2
+  path: ^1.8.3
+  package_info_plus: ^8.1.2
+  
+  # Payment dependencies
+  flutter_stripe: ^10.2.0
+  pdf: ^3.10.4
+
+  # Environment variables
+  flutter_dotenv: ^5.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  build_runner: ^2.4.7
+  flutter_launcher_icons: ^0.13.1
+  
+  mockito: ^5.4.4
+  test: ^1.24.9
+  fake_async: ^1.3.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/images/logos/
+    - assets/images/deities/
+    - assets/localization/
+    - assets/icons/
+    - .env
+
+    # ── 3D nav icons (icons8 sets) ────────────────────────────────────────
+    - assets/icons/3d/nav/icons8-home-windows-11-outline/
+    - assets/icons/3d/nav/icons8-community-windows-11-outline/
+    - assets/icons/3d/nav/icons8-donate-windows-11-outline/
+    - assets/icons/3d/nav/icons8-events-windows-11-outline/
+    - assets/icons/3d/nav/icons8-notification-windows-11-outline/
+    - assets/icons/3d/nav/icons8-user-male-windows-11-outline/
+    # ── Action / feature / empty icons (add files here when ready) ────────
+    - assets/icons/3d/actions/
+    - assets/icons/3d/features/
+    # - assets/icons/3d/empty/
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+    # Removed Medium and Bold to reduce size - use SemiBold for both medium and bold
+    # Note: Consider using system fonts instead for even smaller size
+    # Note: Add these fonts for full Hindi/Gujarati support
+    # - family: NotoSansDevanagari
+    #   fonts:
+    #     - asset: assets/fonts/NotoSansDevanagari-Regular.ttf
+    #       weight: 400
+    #     - asset: assets/fonts/NotoSansDevanagari-Medium.ttf
+    #       weight: 500
+    #     - asset: assets/fonts/NotoSansDevanagari-SemiBold.ttf
+    #       weight: 600
+    #     - asset: assets/fonts/NotoSansDevanagari-Bold.ttf
+    #       weight: 700
+    # - family: NotoSansGujarati
+    #   fonts:
+    #     - asset: assets/fonts/NotoSansGujarati-Regular.ttf
+    #       weight: 400
+    #     - asset: assets/fonts/NotoSansGujarati-Medium.ttf
+    #       weight: 500
+    #     - asset: assets/fonts/NotoSansGujarati-SemiBold.ttf
+    #       weight: 600
+    #     - asset: assets/fonts/NotoSansGujarati-Bold.ttf
+    #       weight: 700
+
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/images/logos/swastik1.jpg"
+  adaptive_icon_background: "#FF6B35"
+  adaptive_icon_foreground: "assets/images/logos/swastik1.jpg"

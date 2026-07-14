@@ -1,0 +1,333 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ============================================
+    // HELPER FUNCTIONS
+    // ============================================
+    
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isVerified() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+    
+    // SECURE: Use custom claims instead of client-modifiable role field
+    // ✅ REMOVED: Hardcoded fallback UID for security
+    function isAdmin() {
+      return request.auth != null &&
+             (request.auth.token.admin == true ||
+              request.auth.token.role == 'admin');
+    }
+    
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    // ============================================
+    // TEMPLES - Public read, admin write
+    // ============================================
+    
+    match /temples/{templeId} {
+      allow read: if true;
+      // Explicitly allow all write operations for admins
+      allow create: if isAdmin();
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+      
+      // Live darshan subcollection - allow system updates for live status monitoring
+      match /live_darshan/{docId} {
+        allow read: if true;
+        // Allow authenticated users to update live status fields only (client-side detection)
+        // Admins can do anything; signed-in users can only write the status fields
+        allow create, update: if isAdmin() ||
+          (isSignedIn() &&
+           request.resource.data.keys().hasOnly([
+             'isCurrentlyLive', 'lastLiveCheck', 'detectionMethod',
+             'liveStatusSource', 'lastStatusChange', 'updatedBy'
+           ]));
+        allow delete: if isAdmin();
+      }
+    }
+    
+    // ============================================
+    // USERS - Secure user data
+    // ============================================
+    
+    match /users/{userId} {
+      // ✅ SECURITY FIX: Require email verification for user creation
+      allow create: if isSignedIn() && request.auth.uid == userId && isVerified();
+
+      // Users can read their own data (even if not verified)
+      allow read: if isSignedIn() && isOwner(userId);
+
+      // Admins can read all user data
+      allow read: if isAdmin();
+
+      // Simplified FCM device token update (no verification required for token updates)
+      allow update: if isSignedIn() && isOwner(userId)
+                      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['deviceToken', 'lastTokenUpdate', 'platform', 'updatedAt']);
+
+      // Users can update their own data with verification
+      allow update: if isSignedIn() && isOwner(userId) && isVerified()
+                      && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+                        'name', 'photoUrl', 'bio', 'preferences', 'updatedAt', 'lastSignIn', 'emailVerified', 'provider', 'emailVerifiedAt', 'displayName', 'photoURL'
+                      ]);
+
+      // Allow login metadata updates without verification
+      allow update: if isSignedIn() && isOwner(userId)
+                      && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+                        'lastSignIn', 'emailVerified', 'emailVerifiedAt', 'provider', 'updatedAt'
+                      ]);
+
+      // Per-user data subcollection (favorites, settings, etc.)
+      match /data/{docId} {
+        allow read, write: if isSignedIn() && isOwner(userId);
+        allow read, write: if isAdmin();
+      }
+    }
+    
+    // ============================================
+    // USER PREFERENCES - User-specific settings
+    // ============================================
+    
+    match /user_preferences/{userId} {
+      // Allow any authenticated user to read preferences for notification service
+      // This is safe because preferences don't contain sensitive personal data
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isOwner(userId);
+      allow update: if isSignedIn() && isOwner(userId);
+      allow delete: if isSignedIn() && isOwner(userId);
+      // Admins have full access
+      allow read, write: if isAdmin();
+    }
+    
+    // ============================================
+    // USER FAVORITES - User-specific favorites
+    // ============================================
+    
+    match /user_favorites/{userId} {
+      allow read: if isSignedIn() && (isOwner(userId) || isAdmin());
+      allow write: if isSignedIn() && isOwner(userId);
+      // Admins need full write access to clean up favorites when deleting temples
+      allow write: if isAdmin();
+    }
+    
+    // ============================================
+    // NOTIFICATIONS - User-specific notifications
+    // ============================================
+    
+    match /user_notifications/{notificationId} {
+      allow read: if isSignedIn() && request.auth.uid == resource.data.userId;
+      allow create: if isSignedIn();
+      allow update, delete: if isSignedIn() && request.auth.uid == resource.data.userId;
+    }
+    
+    match /notification_preferences/{userId} {
+      allow read, write: if isSignedIn() && isOwner(userId);
+      allow create: if isSignedIn();
+    }
+    
+    match /queued_notifications/{notificationId} {
+      // System-only collection - no client access
+      allow read, write: if isAdmin();
+    }
+    
+    // ============================================
+    // BOOKINGS - Secure booking system
+    // ============================================
+    
+    match /bookings/{bookingId} {
+      allow read: if isSignedIn() && 
+                    (request.auth.uid == resource.data.userId || isAdmin());
+      // Force use of Cloud Functions for creation (prevents fraud)
+      allow create: if false;
+      // Users can only cancel their own bookings (status-only updates)
+      allow update: if isSignedIn() && 
+                      request.auth.uid == resource.data.userId &&
+                      request.resource.data.status in ['cancelled'] &&
+                      request.resource.data.keys().hasOnly([
+                        'status', 'updatedAt'
+                      ]);
+      allow delete: if isAdmin();
+    }
+    
+    match /booking_reminders/{reminderId} {
+      // Allow users to read/query their own reminders (userId filter required in queries)
+      allow read: if isSignedIn() && (
+        resource == null || request.auth.uid == resource.data.userId
+      );
+      allow create: if isSignedIn() && request.auth.uid == request.resource.data.userId;
+      allow update: if isSignedIn() && request.auth.uid == resource.data.userId;
+      allow delete: if isSignedIn() && request.auth.uid == resource.data.userId;
+      // Admins have full access
+      allow read, write: if isAdmin();
+    }
+    
+    // ============================================
+    // DONATIONS - Secure payment system
+    // ============================================
+    
+    match /donations/{donationId} {
+      allow read: if isSignedIn() && 
+                    (request.auth.uid == resource.data.userId || isAdmin());
+      allow create: if isSignedIn() && request.auth.uid == request.resource.data.userId;
+      // Only allow status updates after payment verification
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+    
+    match /payment_transactions/{transactionId} {
+      // Users can only read their own transactions
+      allow read: if isSignedIn() && 
+                    request.auth.uid == resource.data.metadata.user_id;
+      // Only Cloud Functions/webhooks can create/update (prevents fraud)
+      allow create, update: if false;
+      // Admins can read all transactions
+      allow read: if isAdmin();
+    }
+    
+    match /payment_disputes/{disputeId} {
+      // Prevent users from creating disputes on others' payments
+      allow create: if isSignedIn() && 
+                      request.auth.uid == request.resource.data.userId;
+      allow read: if isSignedIn() && 
+                    request.auth.uid == resource.data.userId;
+      // Only backend/admin can update disputes
+      allow update: if false;
+      // Admins have full access
+      allow read, write: if isAdmin();
+    }
+    
+    // ============================================
+    // REVIEWS - Public read, authenticated write
+    // ============================================
+    
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if isSignedIn();
+      // Users can update their own reviews (prevent temple ID tampering)
+      allow update: if isSignedIn() && 
+                      request.auth.uid == resource.data.userId &&
+                      request.resource.data.templeId == resource.data.templeId;
+      // Users can delete their own reviews
+      allow delete: if isSignedIn() && request.auth.uid == resource.data.userId;
+      // Admins have full control over all reviews
+      allow update, delete: if isAdmin();
+    }
+    
+    // ============================================
+    // EVENTS - Public read, admin write
+    // ============================================
+    
+    match /events/{eventId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    match /cultural_calendar/{eventId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // ============================================
+    // COMMUNITY - Posts and comments
+    // ============================================
+    
+    match /posts/{postId} {
+      allow read: if true;
+      allow create: if isSignedIn();
+      allow update, delete: if isSignedIn() && 
+                              (request.auth.uid == resource.data.userId || isAdmin());
+    }
+    
+    match /community_posts/{postId} {
+      allow read: if true;
+      allow create: if isSignedIn();
+      allow update, delete: if isSignedIn() && 
+                              (request.auth.uid == resource.data.userId || isAdmin());
+
+      // Likes subcollection — each doc is keyed by userId
+      match /likes/{userId} {
+        allow read: if isSignedIn();
+        allow create, delete: if isSignedIn() && request.auth.uid == userId;
+        allow read, write: if isAdmin();
+      }
+    }
+    
+    match /community_comments/{commentId} {
+      allow read: if true;
+      allow create: if isSignedIn();
+      allow update, delete: if isSignedIn() && 
+                              (request.auth.uid == resource.data.userId || isAdmin());
+    }
+    
+    // ============================================
+    // USER ACTIVITY TRACKING
+    // ============================================
+    
+    match /user_activities/{activityId} {
+      allow read: if isSignedIn() && request.auth.uid == resource.data.userId;
+      allow create: if isSignedIn();
+      allow read: if isAdmin();
+    }
+    
+    match /user_stats/{userId} {
+      allow read: if isSignedIn() && isOwner(userId);
+      // Allow users to create and update their own stats
+      allow create: if isSignedIn() && isOwner(userId);
+      allow update: if isSignedIn() && isOwner(userId);
+      // Admins have full access
+      allow read, write: if isAdmin();
+    }
+    
+    match /temple_visits/{visitId} {
+      allow read: if isSignedIn() && request.auth.uid == resource.data.userId;
+      allow create: if isSignedIn() && request.auth.uid == request.resource.data.userId;
+      allow read: if isAdmin();
+    }
+    
+    match /visit_history/{visitId} {
+      allow read: if isSignedIn() && request.auth.uid == resource.data.userId;
+      allow create: if isSignedIn() && request.auth.uid == request.resource.data.userId;
+      allow read: if isAdmin();
+    }
+    
+    // ============================================
+    // ADMIN-ONLY COLLECTIONS
+    // ============================================
+    
+    match /security_logs/{logId} {
+      allow read, write: if isAdmin();
+    }
+    
+    match /payment_security_logs/{logId} {
+      allow read, write: if isAdmin();
+    }
+    
+    match /content_reports/{reportId} {
+      allow create: if isSignedIn();
+      allow read, write: if isAdmin();
+    }
+    
+    // ============================================
+    // SUPPORT & PRIVACY
+    // ============================================
+    
+    match /support_tickets/{ticketId} {
+      // Users can read their own tickets
+      allow read: if isSignedIn() && request.auth.uid == resource.data.userId;
+      // Users can only create tickets, not update (prevents status/reply tampering)
+      allow create: if isSignedIn();
+      allow update: if false; // Only admin/backend updates ticket status
+      // Admins have full access
+      allow read, write: if isAdmin();
+    }
+    
+    match /user_privacy/{userId} {
+      allow read, write: if isSignedIn() && isOwner(userId);
+    }
+  }
+}

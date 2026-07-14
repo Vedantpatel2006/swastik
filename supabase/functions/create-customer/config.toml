@@ -1,0 +1,2 @@
+[functions.create-customer]
+verify_jwt = false

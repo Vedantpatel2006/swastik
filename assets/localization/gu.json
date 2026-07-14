@@ -1,0 +1,167 @@
+{
+    "notification": {
+        "festival": {
+            "upcoming": {
+                "title": "{festivalName} તહેવાર આવી રહ્યો છે",
+                "message": "{festivalName} તહેવાર {date} ના રોજ શરૂ થશે. ઉત્સવની તૈયારી કરો!"
+            },
+            "started": {
+                "title": "{festivalName} તહેવાર શરૂ થયો",
+                "message": "{festivalName} તહેવાર શરૂ થઈ ગયો છે! નજીકના મંદિરોમાં ઉત્સવમાં જોડાઓ।"
+            },
+            "reminder": {
+                "title": "{festivalName} તહેવારની યાદ",
+                "message": "ભૂલશો નહીં! {festivalName} તહેવાર આજે {time} વાગ્યે શરૂ થાય છે।"
+            }
+        },
+        "location": {
+            "nearby_event": {
+                "title": "{templeName} માં કાર્યક્રમ",
+                "message": "{eventTitle} {templeName} માં થઈ રહ્યો છે, {distance} કિમી દૂર {time} વાગ્યે।"
+            }
+        },
+        "emergency": {
+            "temple_closure": {
+                "title": "{templeName} અસ્થાયી રૂપે બંધ",
+                "message": "{templeName} {date} ના રોજ અસ્થાયી રૂપે બંધ છે. કારણ: {reason}"
+            },
+            "schedule_change": {
+                "title": "{templeName} માં સમય બદલાવ",
+                "message": "{templeName} માં સમય બદલાવ થયો છે. {reason}"
+            },
+            "special_event": {
+                "title": "{templeName} માં વિશેષ કાર્યક્રમ",
+                "message": "{templeName} માં {date} ના રોજ એક વિશેષ કાર્યક્રમ થઈ રહ્યો છે।"
+            }
+        }
+    },
+    "notification_preferences": "સૂચના પસંદગીઓ",
+    "save": "સાચવો",
+    "general_settings": "સામાન્ય સેટિંગ્સ",
+    "enable_notifications": "સૂચનાઓ સક્ષમ કરો",
+    "enable_notifications_desc": "એપ્લિકેશનથી પુશ સૂચનાઓ પ્રાપ્ત કરો",
+    "notification_types": "સૂચના પ્રકારો",
+    "festival_notifications": "તહેવારની સૂચનાઓ",
+    "festival_notifications_desc": "આગામી તહેવારો અને ઉત્સવો વિશે સૂચના મેળવો",
+    "event_notifications": "કાર્યક્રમની સૂચનાઓ",
+    "event_notifications_desc": "મંદિરના કાર્યક્રમો અને પ્રવૃત્તિઓ વિશે સૂચનાઓ પ્રાપ્ત કરો",
+    "emergency_notifications": "કટોકટીની સૂચનાઓ",
+    "emergency_notifications_desc": "મંદિર બંધ અને ફેરફારો વિશે મહત્વપૂર્ણ અપડેટ્સ",
+    "location_notifications": "સ્થાન-આધારિત સૂચનાઓ",
+    "location_notifications_desc": "તમારા સ્થાનની નજીકના કાર્યક્રમો વિશે સૂચના મેળવો",
+    "cultural_categories": "સાંસ્કૃતિક શ્રેણીઓ",
+    "language_preferences": "ભાષા પસંદગીઓ",
+    "location_settings": "સ્થાન સેટિંગ્સ",
+    "notification_radius": "સૂચના ત્રિજ્યા",
+    "sound_vibration": "અવાજ અને કંપન",
+    "enable_sound": "અવાજ સક્ષમ કરો",
+    "enable_vibration": "કંપન સક્ષમ કરો",
+    "quiet_hours": "શાંત કલાકો",
+    "start_time": "શરૂઆતનો સમય",
+    "end_time": "અંતિમ સમય",
+    "preferences_saved": "પસંદગીઓ સફળતાપૂર્વક સાચવવામાં આવી",
+    "error_saving_preferences": "પસંદગીઓ સાચવવામાં ભૂલ",
+    "category_festival": "તહેવાર",
+    "category_puja": "પૂજા",
+    "category_aarti": "આરતી",
+    "category_bhajan": "ભજન",
+    "category_katha": "કથા",
+    "category_yatra": "યાત્રા",
+    "category_donation": "દાન",
+    "category_special": "વિશેષ",
+    "accessibility_settings": "પહોંચ સેટિંગ્સ",
+    "visual_accessibility": "દૃશ્ય પહોંચ",
+    "screen_reader": "સ્ક્રીન રીડર",
+    "voice_navigation": "વૉઇસ નેવિગેશન",
+    "keyboard_navigation": "કીબોર્ડ નેવિગેશન",
+    "language_settings": "ભાષા સેટિંગ્સ",
+    "high_contrast_mode": "ઉચ્ચ કોન્ટ્રાસ્ટ મોડ",
+    "high_contrast_description": "વધુ સારી દૃશ્યતા માટે કોન્ટ્રાસ્ટ વધારો",
+    "text_size": "ટેક્સ્ટનું કદ",
+    "text_size_description": "વધુ સારી વાંચનીયતા માટે ટેક્સ્ટનું કદ સમાયોજિત કરો",
+    "sample_text": "પૂર્વાવલોકન માટે નમૂનો ટેક્સ્ટ",
+    "screen_reader_support": "સ્ક્રીન રીડર સપોર્ટ",
+    "screen_reader_description": "સ્ક્રીન રીડર માટે જાહેરાતો સક્ષમ કરો",
+    "voice_navigation_description": "વૉઇસ કમાન્ડનો ઉપયોગ કરીને નેવિગેટ કરો",
+    "keyboard_navigation_description": "કીબોર્ડ નેવિગેશન સપોર્ટ સક્ષમ કરો",
+    "app_language": "એપ્લિકેશનની ભાષા",
+    "available_voice_commands": "ઉપલબ્ધ વૉઇસ કમાન્ડ્સ:",
+    "and_more_commands": "...અને વધુ કમાન્ડ્સ",
+    "test_accessibility_features": "પહોંચ સુવિધાઓનું પરીક્ષણ કરો",
+    "accessibility_test_message": "પહોંચ સુવિધાઓ યોગ્ય રીતે કામ કરી રહી છે",
+    "test_completed": "પરીક્ષણ પૂર્ણ",
+    "test_completed_message": "પહોંચ સુવિધાઓનું પરીક્ષણ સફળતાપૂર્વક કરવામાં આવ્યું.",
+    "ok": "બરાબર",
+    "temple_card": "મંદિર માહિતી કાર્ડ",
+    "navigation_button": "નેવિગેશન બટન",
+    "search_field": "મંદિરો શોધો",
+    "filter_button": "ફિલ્ટર વિકલ્પો",
+    "favorite_button": "મનપસંદમાં ઉમેરો",
+    "map_view": "મંદિર નકશો દૃશ્ય",
+    "list_view": "મંદિર યાદી દૃશ્ય",
+    "error": {
+        "location": {
+            "service_disabled": "સ્થાન સેવાઓ બંધ છે. કૃપા કરીને નજીકના મંદિરો શોધવા માટે સ્થાન સેવાઓ સક્ષમ કરો.",
+            "permission_denied": "સ્થાનની પરવાનગી નકારવામાં આવી. કૃપા કરીને નજીકના મંદિરોને ઍક્સેસ કરવા માટે સ્થાનની પરવાનગી આપો.",
+            "timeout": "સ્થાન વિનંતીનો સમય સમાપ્ત થયો. કૃપા કરીને ફરીથી પ્રયાસ કરો.",
+            "outside_gujarat": "તમે હાલમાં ગુજરાત પ્રદેશની બહાર છો (અક્ષાંશ: {latitude}, રેખાંશ: {longitude}). આ એપ્લિકેશન ગુજરાતના મંદિરો પર કેન્દ્રિત છે.",
+            "general": "તમારું સ્થાન મેળવવામાં અસમર્થ. કૃપા કરીને તમારી સ્થાન સેટિંગ્સ તપાસો."
+        },
+        "network": {
+            "no_connection": "ઇન્ટરનેટ કનેક્શન નથી. કૃપા કરીને તમારી નેટવર્ક સેટિંગ્સ તપાસો.",
+            "timeout": "નેટવર્ક વિનંતીનો સમય સમાપ્ત થયો. કૃપા કરીને ફરીથી પ્રયાસ કરો.",
+            "offline_data_available": "ચિંતા કરશો નહીં! તમે કેશ્ડ ડેટાનો ઉપયોગ કરીને ગુજરાતના મંદિરો જોઈ શકો છો.",
+            "general": "નેટવર્ક ભૂલ આવી. કૃપા કરીને પછીથી ફરીથી પ્રયાસ કરો."
+        },
+        "firebase": {
+            "permission_denied": "પ્રવેશ નકારવામાં આવ્યો. કૃપા કરીને તમારી પરવાનગીઓ તપાસો અથવા ફરીથી સાઇન ઇન કરો.",
+            "not_found": "વિનંતી કરેલ મંદિર ડેટા મળ્યો નથી.",
+            "unavailable": "મંદિર સેવા અસ્થાયી રૂપે અનુપલબ્ધ છે. કૃપા કરીને પછીથી ફરીથી પ્રયાસ કરો.",
+            "timeout": "વિનંતીનો સમય સમાપ્ત થયો. કૃપા કરીને ફરીથી પ્રયાસ કરો.",
+            "unauthenticated": "પ્રમાણીકરણ જરૂરી છે. કૃપા કરીને ચાલુ રાખવા માટે સાઇન ઇન કરો.",
+            "general": "સર્વર ભૂલ આવી. કૃપા કરીને પછીથી ફરીથી પ્રયાસ કરો."
+        },
+        "language": {
+            "resource_not_found": "{language} માટે ભાષા સંસાધનો ઉપલબ્ધ નથી. ડિફોલ્ટ ભાષાનો ઉપયોગ કરી રહ્યા છીએ.",
+            "invalid_format": "ભાષા ફાઇલ ફોર્મેટ અમાન્ય છે. ડિફોલ્ટ ભાષાનો ઉપયોગ કરી રહ્યા છીએ.",
+            "general": "ભાષા ભૂલ આવી. ડિફોલ્ટ ભાષાનો ઉપયોગ કરી રહ્યા છીએ.",
+            "using_fallback": "ફોલબેક ભાષા તરીકે {fallbackLanguage} નો ઉપયોગ કરી રહ્યા છીએ."
+        },
+        "temple": {
+            "parsing_failed": "ફીલ્ડ '{field}' માટે મંદિર ડેટા લોડ કરવામાં અસમર્થ. કૃપા કરીને ડેટા રિફ્રેશ કરો."
+        },
+        "general": {
+            "invalid_state": "એપ્લિકેશન અમાન્ય સ્થિતિમાં છે. કૃપા કરીને એપ્લિકેશન ફરીથી શરૂ કરો.",
+            "invalid_argument": "અમાન્ય ડેટા પ્રદાન કર્યો. કૃપા કરીને તમારું ઇનપુટ તપાસો.",
+            "feature_unavailable": "આ સુવિધા હજુ સુધી ઉપલબ્ધ નથી. કૃપા કરીને એપ્લિકેશન અપડેટ કરો.",
+            "unexpected": "અનપેક્ષિત ભૂલ આવી. કૃપા કરીને ફરીથી પ્રયાસ કરો."
+        },
+        "action": {
+            "enable_location": "સેટિંગ્સ > સ્થાન પર જાઓ અને સ્થાન સેવાઓ સક્ષમ કરો.",
+            "grant_permission": "સેટિંગ્સ > એપ્લિકેશન્સ > સ્વસ્તિક > પરવાનગીઓ પર જાઓ અને સ્થાન સક્ષમ કરો.",
+            "try_again": "કૃપા કરીને થોડી ક્ષણોમાં ફરીથી પ્રયાસ કરો.",
+            "move_to_gujarat": "આ એપ્લિકેશન ગુજરાત પ્રદેશ માટે ડિઝાઇન કરવામાં આવ્યું છે. સંપૂર્ણ સુવિધાઓ ઍક્સેસ કરવા માટે કૃપા કરીને ગુજરાતની મુલાકાત લો.",
+            "check_location": "કૃપા કરીને તમારી સ્થાન સેટિંગ્સ તપાસો અને ફરીથી પ્રયાસ કરો.",
+            "use_offline": "ઑફલાઇન ડેટા સાથે બ્રાઉઝ કરવાનું ચાલુ રાખો.",
+            "check_connection": "કૃપા કરીને તમારું ઇન્ટરનેટ કનેક્શન તપાસો અને ફરીથી પ્રયાસ કરો.",
+            "contact_support": "જો સમસ્યા ચાલુ રહે, તો કૃપા કરીને સપોર્ટનો સંપર્ક કરો.",
+            "refresh_data": "મંદિર ડેટા રિફ્રેશ કરવા માટે નીચે ખેંચો.",
+            "restart_app": "કૃપા કરીને એપ્લિકેશન બંધ કરીને ફરીથી શરૂ કરો.",
+            "check_input": "કૃપા કરીને તમારું ઇનપુટ ચકાસો અને ફરીથી પ્રયાસ કરો.",
+            "update_app": "આ સુવિધા ઍક્સેસ કરવા માટે કૃપા કરીને એપ્લિકેશન અપડેટ કરો."
+        }
+    },
+    "retry": "ફરીથી પ્રયાસ કરો",
+    "dismiss": "બરતરફ કરો",
+    "close": "બંધ કરો",
+    "error": {
+        "title": "ભૂલ આવી",
+        "details": "ભૂલ વિગતો",
+        "suggested_action": "સૂચવેલ કાર્ય",
+        "technical_details": "તકનીકી વિગતો",
+        "cultural_context": "આ એપ્લિકેશન ખાસ કરીને ગુજરાતના મંદિરો અને સાંસ્કૃતિક અનુભવો માટે ડિઝાઇન કરવામાં આવ્યું છે."
+    },
+    "location": {
+        "within_gujarat": "સ્થાન ગુજરાત પ્રદેશની અંદર છે"
+    }
+}

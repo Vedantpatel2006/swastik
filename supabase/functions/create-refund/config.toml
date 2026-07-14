@@ -1,0 +1,2 @@
+[functions.create-refund]
+verify_jwt = false

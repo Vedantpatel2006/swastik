@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "797110136734",
+    "project_id": "intership-96534",
+    "storage_bucket": "intership-96534.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797110136734:android:8ea023d231c7cb34d4308f",
+        "android_client_info": {
+          "package_name": "com.swastik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797110136734-aqv9h0b6bn2ujonguglj224fgo8s3iis.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.swastik",
+            "certificate_hash": "cfb47d8db534ec851ff82d8367694c957ce70ee0"
+          }
+        },
+        {
+          "client_id": "797110136734-psioo9gagdu8c9v09hgt6bb2s8cm1lig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9oBBsgfiUxZr2K7AjbFG6uR45GHCW4h8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797110136734-psioo9gagdu8c9v09hgt6bb2s8cm1lig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

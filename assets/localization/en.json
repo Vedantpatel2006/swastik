@@ -1,0 +1,167 @@
+{
+    "notification": {
+        "festival": {
+            "upcoming": {
+                "title": "{festivalName} Festival Approaching",
+                "message": "{festivalName} festival will begin on {date}. Prepare for the celebrations!"
+            },
+            "started": {
+                "title": "{festivalName} Festival Started",
+                "message": "{festivalName} festival has begun! Join the celebrations at nearby temples."
+            },
+            "reminder": {
+                "title": "{festivalName} Festival Reminder",
+                "message": "Don't forget! {festivalName} festival starts at {time} today."
+            }
+        },
+        "location": {
+            "nearby_event": {
+                "title": "Event at {templeName}",
+                "message": "{eventTitle} is happening at {templeName}, {distance} km away at {time}."
+            }
+        },
+        "emergency": {
+            "temple_closure": {
+                "title": "{templeName} Temporarily Closed",
+                "message": "{templeName} is temporarily closed on {date}. Reason: {reason}"
+            },
+            "schedule_change": {
+                "title": "Schedule Change at {templeName}",
+                "message": "There has been a schedule change at {templeName}. {reason}"
+            },
+            "special_event": {
+                "title": "Special Event at {templeName}",
+                "message": "A special event is happening at {templeName} on {date}."
+            }
+        }
+    },
+    "notification_preferences": "Notification Preferences",
+    "save": "Save",
+    "general_settings": "General Settings",
+    "enable_notifications": "Enable Notifications",
+    "enable_notifications_desc": "Receive push notifications from the app",
+    "notification_types": "Notification Types",
+    "festival_notifications": "Festival Notifications",
+    "festival_notifications_desc": "Get notified about upcoming festivals and celebrations",
+    "event_notifications": "Event Notifications",
+    "event_notifications_desc": "Receive notifications about temple events and activities",
+    "emergency_notifications": "Emergency Notifications",
+    "emergency_notifications_desc": "Important updates about temple closures and changes",
+    "location_notifications": "Location-based Notifications",
+    "location_notifications_desc": "Get notified about events near your location",
+    "cultural_categories": "Cultural Categories",
+    "language_preferences": "Language Preferences",
+    "location_settings": "Location Settings",
+    "notification_radius": "Notification Radius",
+    "sound_vibration": "Sound & Vibration",
+    "enable_sound": "Enable Sound",
+    "enable_vibration": "Enable Vibration",
+    "quiet_hours": "Quiet Hours",
+    "start_time": "Start Time",
+    "end_time": "End Time",
+    "preferences_saved": "Preferences saved successfully",
+    "error_saving_preferences": "Error saving preferences",
+    "category_festival": "Festival",
+    "category_puja": "Puja",
+    "category_aarti": "Aarti",
+    "category_bhajan": "Bhajan",
+    "category_katha": "Katha",
+    "category_yatra": "Yatra",
+    "category_donation": "Donation",
+    "category_special": "Special",
+    "accessibility_settings": "Accessibility Settings",
+    "visual_accessibility": "Visual Accessibility",
+    "screen_reader": "Screen Reader",
+    "voice_navigation": "Voice Navigation",
+    "keyboard_navigation": "Keyboard Navigation",
+    "language_settings": "Language Settings",
+    "high_contrast_mode": "High Contrast Mode",
+    "high_contrast_description": "Increase contrast for better visibility",
+    "text_size": "Text Size",
+    "text_size_description": "Adjust text size for better readability",
+    "sample_text": "Sample text for preview",
+    "screen_reader_support": "Screen Reader Support",
+    "screen_reader_description": "Enable announcements for screen readers",
+    "voice_navigation_description": "Navigate using voice commands",
+    "keyboard_navigation_description": "Enable keyboard navigation support",
+    "app_language": "App Language",
+    "available_voice_commands": "Available Voice Commands:",
+    "and_more_commands": "...and more commands",
+    "test_accessibility_features": "Test Accessibility Features",
+    "accessibility_test_message": "Accessibility features are working correctly",
+    "test_completed": "Test Completed",
+    "test_completed_message": "Accessibility features have been tested successfully.",
+    "ok": "OK",
+    "temple_card": "Temple information card",
+    "navigation_button": "Navigation button",
+    "search_field": "Search temples",
+    "filter_button": "Filter options",
+    "favorite_button": "Add to favorites",
+    "map_view": "Temple map view",
+    "list_view": "Temple list view",
+    "error": {
+        "location": {
+            "service_disabled": "Location services are disabled. Please enable location services to find nearby temples.",
+            "permission_denied": "Location permission denied. Please grant location permission to access nearby temples.",
+            "timeout": "Location request timed out. Please try again.",
+            "outside_gujarat": "You are currently outside Gujarat region (Lat: {latitude}, Lng: {longitude}). This app focuses on Gujarat temples.",
+            "general": "Unable to get your location. Please check your location settings."
+        },
+        "network": {
+            "no_connection": "No internet connection. Please check your network settings.",
+            "timeout": "Network request timed out. Please try again.",
+            "offline_data_available": "Don't worry! You can still browse Gujarat temples using cached data.",
+            "general": "Network error occurred. Please try again later."
+        },
+        "firebase": {
+            "permission_denied": "Access denied. Please check your permissions or sign in again.",
+            "not_found": "The requested temple data was not found.",
+            "unavailable": "Temple service is temporarily unavailable. Please try again later.",
+            "timeout": "Request timed out. Please try again.",
+            "unauthenticated": "Authentication required. Please sign in to continue.",
+            "general": "Server error occurred. Please try again later."
+        },
+        "language": {
+            "resource_not_found": "Language resources for {language} are not available. Using default language.",
+            "invalid_format": "Language file format is invalid. Using default language.",
+            "general": "Language error occurred. Using default language.",
+            "using_fallback": "Using {fallbackLanguage} as fallback language."
+        },
+        "temple": {
+            "parsing_failed": "Unable to load temple data for field '{field}'. Please refresh the data."
+        },
+        "general": {
+            "invalid_state": "Application is in an invalid state. Please restart the app.",
+            "invalid_argument": "Invalid data provided. Please check your input.",
+            "feature_unavailable": "This feature is not yet available. Please update the app.",
+            "unexpected": "An unexpected error occurred. Please try again."
+        },
+        "action": {
+            "enable_location": "Go to Settings > Location and enable location services.",
+            "grant_permission": "Go to Settings > Apps > Swastik > Permissions and enable location.",
+            "try_again": "Please try again in a few moments.",
+            "move_to_gujarat": "This app is designed for Gujarat region. Please visit Gujarat to access full features.",
+            "check_location": "Please check your location settings and try again.",
+            "use_offline": "Continue browsing with offline data.",
+            "check_connection": "Please check your internet connection and try again.",
+            "contact_support": "If the problem persists, please contact support.",
+            "refresh_data": "Pull down to refresh the temple data.",
+            "restart_app": "Please close and restart the app.",
+            "check_input": "Please verify your input and try again.",
+            "update_app": "Please update the app to access this feature."
+        }
+    },
+    "retry": "Retry",
+    "dismiss": "Dismiss",
+    "close": "Close",
+    "error": {
+        "title": "Error Occurred",
+        "details": "Error Details",
+        "suggested_action": "Suggested Action",
+        "technical_details": "Technical Details",
+        "cultural_context": "This app is specially designed for Gujarat temples and cultural experiences."
+    },
+    "location": {
+        "within_gujarat": "Location is within Gujarat region"
+    }
+}
